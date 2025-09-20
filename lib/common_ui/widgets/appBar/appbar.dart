@@ -1,4 +1,5 @@
 // lib/common_ui/appbar/u_primary_app_bar.dart
+import 'package:cpdl/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -35,7 +36,7 @@ class UPrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       elevation: 0,
-      backgroundColor: scheme.primary,
+      backgroundColor: UColors.primary,
       surfaceTintColor: Colors.transparent,
       toolbarHeight: toolbarHeight,
       centerTitle: false,
@@ -53,7 +54,7 @@ class UPrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
             height: 44,
             width: 44,
             decoration: BoxDecoration(
-              color: onPrimary.withOpacity(.12),
+              color: onPrimary.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(Iconsax.buildings, color: onPrimary, size: 22),
@@ -82,7 +83,7 @@ class UPrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: t.bodyMedium?.copyWith(
-                      color: onPrimary.withOpacity(.9),
+                      color: onPrimary.withValues(alpha: 0.9),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
