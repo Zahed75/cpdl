@@ -1,10 +1,6 @@
 // lib/features/onBoarding/widgets/onboarding_next_button.dart
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../common_ui/widgets/button/elevated_button.dart';
 import '../../../utils/constants/sizes.dart';
 import '../notifier/onboarding_notifier.dart';
 
@@ -16,17 +12,24 @@ class OnBoardingNextButton extends ConsumerWidget {
     final onboardingState = ref.watch(onboardingNotifierProvider);
 
     return Positioned(
-      left: 0,
-      right: 0,
-      bottom: USizes.spaceBtwItems * 7,
-      child: UElevatedButton(
+      bottom: USizes.spaceBtwItems * 4,
+      right: 16, // move it to the right side
+      child: IconButton(
+        style: IconButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Colors.white,
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(12),
+        ),
+        icon: Icon(
+          onboardingState.isLastPage
+              ? Icons
+                    .check // show ✔ when last page
+              : Icons.arrow_forward, // arrow otherwise
+        ),
         onPressed: () {
-          // Call the nextPage function from the notifier and pass the context
-          ref
-              .read(onboardingNotifierProvider.notifier)
-              .nextPage(context); // Pass context here
+          ref.read(onboardingNotifierProvider.notifier).nextPage(context);
         },
-        child: Text(onboardingState.isLastPage ? 'Get Started' : "Next"),
       ),
     );
   }
